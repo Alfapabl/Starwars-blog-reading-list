@@ -13,12 +13,22 @@ export const Home = () => {
 
 
 	return(
-		<div className="text-center mt-5">
-			<ul>
-			{store.characters.map((item)=><li key={item.uid} > <Card array={item}  store={store} actions={actions}/>  </li>)}
-			</ul>
+		<>
+		<h1> Characters </h1>
+		
+
+		<div className="d-flex mt-5 overflow-auto" styles={{paddingTop: '50px'}}>
+			
+			{store.characters.map((item)=>
+			<div className="col-3 h-50" key={item.uid}> <Card array={item}/>  </div>)}
+			
 
 		</div>
+
+
+		
+
+		</>
 		);
 
 };
