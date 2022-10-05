@@ -2,15 +2,15 @@ import React, { useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import {Context} from "../store/appContext"
 
-const Card = (props) => {
+
+const CardPlanets = (props) => {
 
 
     const [infoChar, setInfoChar] = useState([]);
-
     const {store, actions} = useContext(Context);
 
     useEffect(() => {	
-        fetch(`https://www.swapi.tech/api/people/${props.array.uid}`)
+        fetch(`https://www.swapi.tech/api/planets/${props.array.uid}`)
 				.then((response)=>response.json())
 				.then((resp) => setInfoChar(resp.result))
   }
@@ -18,7 +18,7 @@ const Card = (props) => {
         
     , [])
 
-    const img = `https://starwars-visualguide.com/assets/img/characters/${props.array.uid}.jpg`;
+    const img = `https://starwars-visualguide.com/assets/img/planets/${props.array.uid}.jpg`;
  
 
     
@@ -30,14 +30,13 @@ const Card = (props) => {
       <div className="card" styles="width: 18rem;">
         <h1> {infoChar.properties?.name} </h1>
         <ul className="list-group list-group-flush">
-        <li className="list-group-item">Gender: {infoChar.properties?.gender}</li>
-          <li className="list-group-item">Hair Color: {infoChar.properties?.hair_color}</li>
-          <li className="list-group-item">Eye Color: {infoChar.properties?.eye_color}</li>
+        <li className="list-group-item">Population: {infoChar.properties?.population}</li>
+          <li className="list-group-item">Climate: {infoChar.properties?.climate}</li>
+          <li className="list-group-item">terrain: {infoChar.properties?.terrain}</li>
         </ul>
         <div className="modal-footer">
-        <Link to={"/single/" + props.array.uid} > Learn more </Link>
+        <Link to={"/singlePLanets/" + props.array.uid} > Learn more </Link>
         <button type="button" className="btn btn-primary" onClick={() => {actions.addFavorites(infoChar.properties?.name);}}>Add to Favorites</button>
-
 
         </div>
         
@@ -46,4 +45,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default CardPlanets;

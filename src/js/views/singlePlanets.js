@@ -3,17 +3,18 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = (props) => {
+export const SinglePlanets = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
   useEffect(() => {
-    actions.infoCharacter(params.theid);
+    actions.infoPlanets(params.theid);
   }, []);
 
+  console.log(store.info)
 
   const img =
-  `https://starwars-visualguide.com/assets/img/characters/${params.theid}.jpg`
+  `https://starwars-visualguide.com/assets/img/planets/${params.theid}.jpg`;
 
   return (
     <>
@@ -27,8 +28,7 @@ export const Single = (props) => {
               <div className="card-body">
                 <h5 className="card-title">{store.info.properties?.name}</h5>
                 <p className="card-text">
-                {store.info.description}
-                  
+                  {store.info.description}
                 </p>
               </div>
             </div>
@@ -37,12 +37,12 @@ export const Single = (props) => {
 		  <div className="d-flex mt-5 overflow-auto" styles={{paddingTop: '50px'}}>
 			
 			
-			<div className="col-2 h-50"> Name: {store.info.properties?.name}  </div>
-			<div className="col-2 h-50"> Birth Year: {store.info.properties?.birth_year}  </div>
-			<div className="col-2 h-50"> Hair Color: {store.info.properties?.hair_color}  </div>
-			<div className="col-2 h-50"> Eye Color: {store.info.properties?.eye_color}  </div>
-			<div className="col-2 h-50"> Height: {store.info.properties?.height}  </div>
-			<div className="col-2 h-50"> Mass: {store.info.properties?.mass}  </div>
+			<div className="col-2 h-50"> Population: {store.info.properties?.population}  </div>
+			<div className="col-2 h-50"> Climate: {store.info.properties?.climate}  </div>
+			<div className="col-2 h-50"> Rotation period: {store.info.properties?.rotation_period}  </div>
+			<div className="col-2 h-50"> Orbital Period: {store.info.properties?.orbital_period}  </div>
+			<div className="col-2 h-50"> Gravity: {store.info.properties?.gravity}  </div>
+			<div className="col-2 h-50"> Terrain: {store.info.properties?.terrain}  </div>
 			
 		
 
@@ -61,6 +61,6 @@ export const Single = (props) => {
   );
 };
 
-Single.propTypes = {
+SinglePlanets.propTypes = {
   match: PropTypes.object,
 };

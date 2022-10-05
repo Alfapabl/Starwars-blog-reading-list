@@ -2,13 +2,14 @@ import React, {useContext, useEffect} from "react";
 import "../../styles/home.css";
 import {Context} from "../store/appContext"
 import Card from "../component/card"
+import CardPlanets from "../component/cardPlanets"
 
 
 
 
 export const Home = () => {
 
-	const {store, actions} = useContext(Context);
+	const {store} = useContext(Context);
 	
 
 
@@ -20,7 +21,15 @@ export const Home = () => {
 		<div className="d-flex mt-5 overflow-auto" styles={{paddingTop: '50px'}}>
 			
 			{store.characters.map((item)=>
-			<div className="col-3 h-50" key={item.uid}> <Card array={item}/>  </div>)}
+			<div className="col-3 h-50" key={item.uid}> <Card array={item} type="people" />  </div>)}
+			
+
+		</div>
+
+		<div className="d-flex mt-5 overflow-auto" styles={{paddingTop: '50px'}}>
+			
+			{store.characters.map((item)=>
+			<div className="col-3 h-50" key={item.uid}> <CardPlanets array={item} type="people" />  </div>)}
 			
 
 		</div>
